@@ -1,5 +1,4 @@
-INSERT INTO burgers (burger_name, devoured) VALUES ("Arlo's Burger",false);
-INSERT INTO burgers (burger_name, devoured) VALUES ("Slam Bammer",false);
-INSERT INTO burgers (burger_name, devoured) VALUES ("Double Jammer",false);
-INSERT INTO burgers (burger_name, devoured) VALUES ("Top Notch",false);
-INSERT INTO burgers (burger_name, devoured) VALUES ("Dan's",false);
+INSERT INTO burgers (burger_name, devoured) VALUES ("Nobunny",false);
+INSERT INTO burgers (burger_name, devoured) VALUES ("La Luz",false);
+INSERT INTO burgers (burger_name, devoured) VALUES ("FIDLAR",false);
+INSERT INTO burgers (burger_name, devoured) VALUES ("Shannon and the Clams",false);
