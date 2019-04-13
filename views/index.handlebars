@@ -1,0 +1,64 @@
+<div id="wrapper">
+  <img src="/assets/img/burger.png" alt="burger.png">
+  <h1>Spin your favorite Burger record!</h1>
+  <!--SHOW BURGER-->
+  <div id="toEat">
+      <h2>Burg</h2>
+      <ul>
+      {{#each burgers}}
+          {{#unless devoured}}
+          <li><input type="text" value="{{burger_name}}" readonly>
+          <button data-id="{{id}}">Spin it!</button></li>
+          {{/unless}}
+      {{/each}}
+      </ul>
+  </div>
+  <div id="alreadyEaten">
+      <h2>Burger Heaven</h2>
+      <ul>
+      {{#each burgers}}
+          {{#if devoured}}
+          <li><input type="text" value="{{burger_name}}" class="devoured" readonly></li>
+          {{/if}}
+      {{/each}}
+      </ul>
+  </div>
+
+
+  <form>
+      <textarea type="text" name="burger"></textarea>
+      <input type="submit" id="submit" value="Order">
+      <h4>Pick your favorite Burger band.</h4>
+  </form>
+</div>
+
+<script>
+// NEW BURGER
+$(function() {
+    $("#submit").on("click", function(e) {
+    e.preventDefault();
+    $.ajax("/api/burgers/", {
+      type: "POST",
+      data: {burger_name:$("[name=burger]").val().trim()}
+    }).then(
+      function() {
+        console.log("patty on the skillet");
+        location.reload();
+      }
+    );
+  });
+
+  // WHILE BURGER IS BEING DEVOURED
+  $("button").on("click", function() {
+    var id = $(this).data("id");
+    $.ajax("/api/burgers/" + id, {
+      type: "PUT",
+    }).then(
+      function() {
+        console.log("eatin' da burga");
+        location.reload();
+      }
+    );
+  });
+});
+</script>
